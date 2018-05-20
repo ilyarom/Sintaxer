@@ -16,70 +16,80 @@ int main()
 		GrammarObject("E", GrammarObjectType::TERMINAL),
 		GrammarObject("#", GrammarObjectType::NONTERMINAL)
 	};
-	set<GrammarObject> guideSet = {
+	vector<GrammarObject> guideSet = {
 		GrammarObject("id", GrammarObjectType::NONTERMINAL)
 	};
 	/*end 1*/
+	Rule rule(terminal, rightPart, guideSet);
+	rules.push_back(rule);
+
 
 	/*2*/
-	vector<Rule> rules;
-	GrammarObject terminal("S", GrammarObjectType::TERMINAL);
-	vector<GrammarObject> rightPart = {
+	terminal = GrammarObject("S", GrammarObjectType::TERMINAL);
+	rightPart = {
 		GrammarObject("while", GrammarObjectType::NONTERMINAL),
 		GrammarObject("E", GrammarObjectType::TERMINAL),
 		GrammarObject("do", GrammarObjectType::NONTERMINAL),
 		GrammarObject("S", GrammarObjectType::TERMINAL),
 		GrammarObject("#", GrammarObjectType::NONTERMINAL),
 	};
-	set<GrammarObject> guideSet = {
+	guideSet = {
 		GrammarObject("while", GrammarObjectType::NONTERMINAL)
 	};
 	/*end 2*/
 
+	rule = Rule(terminal, rightPart, guideSet);
+	rules.push_back(rule);
+
 
 
 	/*3*/
-	vector<Rule> rules;
-	GrammarObject terminal("E", GrammarObjectType::TERMINAL);
-	vector<GrammarObject> rightPart = {
+	terminal = GrammarObject("E", GrammarObjectType::TERMINAL);
+	rightPart = {
 		GrammarObject("id", GrammarObjectType::NONTERMINAL),
 		GrammarObject("A", GrammarObjectType::TERMINAL)
 	};
-	set<GrammarObject> guideSet = {
+	guideSet = {
 		GrammarObject("id", GrammarObjectType::NONTERMINAL)
 	};
 	/*end 3*/
+
+	rule = Rule(terminal, rightPart, guideSet);
+	rules.push_back(rule);
 	
 
 	/*4*/
-	vector<Rule> rules;
-	GrammarObject terminal("A", GrammarObjectType::TERMINAL);
-	vector<GrammarObject> rightPart = {
+	terminal = GrammarObject("A", GrammarObjectType::TERMINAL);
+	rightPart = {
 		GrammarObject("e", GrammarObjectType::EMPTY),
 	};
-	set<GrammarObject> guideSet = {
+	guideSet = {
 		GrammarObject("#", GrammarObjectType::NONTERMINAL),
 		GrammarObject("do", GrammarObjectType::NONTERMINAL)
 	};
 	/*end 4*/
 
+	rule = Rule(terminal, rightPart, guideSet);
+	rules.push_back(rule);
+
 
 	/*5*/
-	vector<Rule> rules;
-	GrammarObject terminal("A", GrammarObjectType::TERMINAL);
-	vector<GrammarObject> rightPart = {
+	terminal = GrammarObject("A", GrammarObjectType::TERMINAL);
+	rightPart = {
 		GrammarObject("+", GrammarObjectType::NONTERMINAL),
 		GrammarObject("E", GrammarObjectType::TERMINAL),
 		GrammarObject("A", GrammarObjectType::TERMINAL)
 	};
-	set<GrammarObject> guideSet = {
+	guideSet = {
 		GrammarObject("+", GrammarObjectType::NONTERMINAL)
 	};
 	/*end 5*/
 
-
-	Rule rule(terminal, rightPart, guideSet);
+	rule = Rule(terminal, rightPart, guideSet);
 	rules.push_back(rule);
+
+
+	
 	TableBuilder builder(rules);
     return 0;
 }

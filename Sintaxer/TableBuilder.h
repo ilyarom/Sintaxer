@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <map>
+#include <unordered_map>
 #include "Rule.h"
 #include "TableRow.h"
 
@@ -10,13 +11,15 @@ class TableBuilder
 {
 public:
 	TableBuilder(vector<Rule> rules);
-	~TableBuilder();
 private:
 	void CreateTable();
+	void ReadRules();
+	void ComputeNextIds();
+	void CheckEmpties(const Rule &rule);
 	vector<Rule> m_rules;
 	vector<TableRow> m_tableValues;
-	map<GrammarObject, size_t> tableReferences;
-	map<GrammarObject, set<GrammarObject>> referencingSets;
-	vector<pair<vector<GrammarObject>, size_t>> unresolvedNextIds;
+	unordered_map<string, vector<std::size_t>> m_tableReferences;
+	unordered_map<string, vector<GrammarObject>> m_referencingSets;
+	vector<pair<vector<GrammarObject>, std::size_t>> m_unresolvedNextIds;
 };
 
